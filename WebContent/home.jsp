@@ -5,8 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<%@include file="all_component/allcss.jsp" %>
 </head>
 <body>
-<h1>Homeee</h1>
+<%@include file="all_component/navbar.jsp" %>
 </body>
 </html>

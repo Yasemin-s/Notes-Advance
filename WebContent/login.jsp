@@ -20,8 +20,20 @@
 <div class="card-header text-center text-white bg-custom">
 <i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
 <h4>Login Page</h4>
-<div class="card-body"><form action="loginServlet" method="post">
+</div>
+<%
+String invalidMsg = (String) session.getAttribute("login-failed");
+if(invalidMsg != null){
+	%>
+	<div class="alert alert-danger" role="alert"><%=invalidMsg %></div>
+<%
+	session.removeAttribute("login-failed");
+	}
+%>
 
+
+
+<div class="card-body"><form action="loginServlet" method="post">
       <div class="form-group">
       <label>Enter email</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "uemail">

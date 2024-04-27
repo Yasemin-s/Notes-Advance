@@ -1,4 +1,4 @@
-
+<%@page import="com.User.UserDetails" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom navbar-custom">
   <a class="navbar-brand" href="#"><i class="fa fa-book" aria-hidden="true"></i>ENOTES</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +19,27 @@
         Show Notes</a>
       </li>
     </ul>
-      
-      <a href="login.jsp" class="btn btn-light my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Login</a>
-      <a href="register.jsp"  class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a>
+
+
+      <%
+UserDetails user = (UserDetails)session.getAttribute("UserD");
+
+if(user != null){%>
+  <a href="profile.jsp" class="btn btn-light my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+  Profile</a>
+  <a href="logout.jsp"  class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-user-plus" aria-hidden="true"></i>
+  Logout</a>
+<% }
+else{
+	%>
+  <a href="login.jsp" class="btn btn-light my-2 my-sm-0 mr-2" type="submit"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+  Login</a>
+  <a href="register.jsp"  class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-user-plus" aria-hidden="true"></i>
+  Register</a>
+<%
+}
+%>
+
 
   </div>
 </nav>

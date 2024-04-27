@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.DAO.UserDAO;
 import com.Db.DBConnect;
@@ -25,13 +26,17 @@ public class loginServlet extends HttpServlet {
 		us.setPassword(password);
 		
 		UserDAO dao = new UserDAO(DBConnect.getConn());
-		boolean f = dao.loginUser(us);
+		UserDetails user = dao.loginUser(us);
 
-		if(f) {
+		if(user != null) {
+			HttpSession session  =request.getSession();
+			session.setAttribute("userD", user);
 			response.sendRedirect("home.jsp");
 		}
 		else {
-
+			HttpSession session = request.getSession();
+			session.setAttribute("login-failed", "Invalid UserName and Password");
+			response.sendRedirect("login.jsp");
 		}
 		
 	}

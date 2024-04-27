@@ -36,8 +36,10 @@ public boolean addUser(UserDetails us) {
 	return f;
 }
 
-public boolean loginUser(UserDetails us) {
-    boolean f = false;
+public UserDetails loginUser(UserDetails us) {
+
+	UserDetails user = null;
+	
     try {
         String query = "SELECT * FROM [user] WHERE email=? AND password=?";
         
@@ -47,13 +49,16 @@ public boolean loginUser(UserDetails us) {
         ResultSet rs = ps.executeQuery();
         
         if(rs.next()) {
-            f = true;
+        	user = new UserDetails();
+        	user.setName(rs.getString("name"));
+        	user.setEmail(rs.getString("email"));
+        	user.setPassword("password");
         } 
         
     } catch(Exception e) {
         e.printStackTrace();
     }
-    return f;
+    return user;
 }
 
 
