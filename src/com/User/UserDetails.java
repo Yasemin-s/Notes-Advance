@@ -1,16 +1,31 @@
 package com.User;
 
 public class UserDetails {
-	private int id;
+	//private int id;
 	private String name;
 	private String email;
 	private String password;
+	
+	/*
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	*/
+	
+	public UserDetails() {
+		super();
+	}
+	
+	public UserDetails(String name, String email,String password) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -18,7 +33,7 @@ public class UserDetails {
 		this.name = name;
 	}
 	public String getEmail() {
-		return email;
+		return email; 
 	}
 	public void setEmail(String email) {
 		this.email = email;

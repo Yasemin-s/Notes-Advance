@@ -2,19 +2,61 @@ package com.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.User.UserDetails;
 
 public class UserDAO {
-/*private static Connection conn;
-public static Connection getConn() {
-	try {
-		if(conn == null) {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc.mysql://localhost:3306/enotes2","root","password");
-		}
-	}
-	catch(Exception e) {
-		e.printStackTrace();
-		}
-	return conn;
-}*/
+	
+private static Connection conn;
+
+public UserDAO(Connection conn) {
+	super();
+	this.conn = conn;
 }
+
+public boolean addUser(UserDetails us) {
+	boolean f = false;
+	
+	try {
+	    String query = "INSERT INTO [user] VALUES (?, ?, ?)";
+	    PreparedStatement ps = conn.prepareStatement(query);
+	    ps.setString(1, us.getName());
+	    ps.setString(2, us.getEmail());
+	    ps.setString(3, us.getPassword());
+	    int i = ps.executeUpdate();
+	    if(i == 1) {
+	        f = true;
+	    }
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+
+	return f;
+}
+
+public boolean loginUser(UserDetails us) {
+    boolean f = false;
+    try {
+        String query = "SELECT * FROM [user] WHERE email=? AND password=?";
+        
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, us.getEmail());
+        ps.setString(2, us.getPassword());
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()) {
+            f = true;
+        } 
+        
+    } catch(Exception e) {
+        e.printStackTrace();
+    }
+    return f;
+}
+
+
+
+  } 
+

@@ -24,15 +24,11 @@ background-attachment: fixed;
     </head>
     <body>
         <%@include file="all_component/navbar.jsp" %>
-        
-        <%
-        UserServlet u=new UserServlet();
-        u.liste().get(0).getName();
-        %>
+
        
         <div class="container-fluid back-img">
   <div class="text-center">
-  <h1 class="text-white"><i class="fa fa-book" aria-hidden="true"></i>  Welcome to ENotes<%=u.liste().get(0).getName() %> </h1>
+  <h1 class="text-white"><i class="fa fa-book" aria-hidden="true"></i>  Welcome to ENotes </h1>
 <a href="login.jsp" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i>  Login</a>
 <a href="register.jsp" class="btn btn-light"><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</a>
   

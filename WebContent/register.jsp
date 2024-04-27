@@ -17,6 +17,38 @@
 <div class="card-header text-center text-white bg-custom">
 <i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
 <h4>Registration</h4>
+</div>
+
+
+
+<%
+String regMsg = (String)session.getAttribute("reg-success");
+if(regMsg != null){
+	%>
+	<div class="alert alert-success" role="alert"><%= regMsg  %> Login <a href="login.jsp">Click Here</div></a>
+	<% 
+	session.removeAttribute("reg-success");
+}
+
+%>
+
+<%
+String FailedMsg = (String)session.getAttribute("failed-msg");
+if(FailedMsg != null){
+	%>
+<div class="alert alert-danger" role="alert">
+<%= FailedMsg %>
+</div>
+	<% 
+	session.removeAttribute("failed-msg");
+}
+
+%>
+
+
+
+
+
 <div class="card-body">
 <form action="UserServlet" method="post">
   <div class="form-group">
@@ -38,7 +70,7 @@
   <button type="submit" class="btn btn-primary badge-pill btn-block">Register</button>
 </form>
 </div>
-</div>
+
 </div>
 </div>
 </div>
