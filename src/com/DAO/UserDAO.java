@@ -50,6 +50,7 @@ public UserDetails loginUser(UserDetails us) {
         
         if(rs.next()) {
         	user = new UserDetails();
+        	user.setId(rs.getInt("id"));
         	user.setName(rs.getString("name"));
         	user.setEmail(rs.getString("email"));
         	user.setPassword("password");
@@ -64,4 +65,3 @@ public UserDetails loginUser(UserDetails us) {
 
 
   } 
-

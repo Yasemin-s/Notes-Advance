@@ -30,7 +30,7 @@ public class loginServlet extends HttpServlet {
 
 		if(user != null) {
 			HttpSession session  =request.getSession();
-			session.setAttribute("userD", user);
+			session.setAttribute("UserD", user);
 			response.sendRedirect("home.jsp");
 		}
 		else {
