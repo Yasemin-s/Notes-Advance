@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     import="com.User.UserDetails"
     pageEncoding="ISO-8859-1"%>
+    
+    <%
+    UserDetails user1 = (UserDetails) session.getAttribute("UserD");
+    
+    if(user1 == null){
+    	response.sendRedirect("login.jsp");
+    	session.setAttribute("Login-error","please login");
+    }
+    %>
 
 <!DOCTYPE html>
 <html>
