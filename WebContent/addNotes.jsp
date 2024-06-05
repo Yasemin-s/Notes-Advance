@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    import="com.User.UserDetails"
     pageEncoding="ISO-8859-1"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,29 +18,15 @@
 <div class="row">
 <div class="col-md-12">
 
-<form action="AddNotesServlet" method="post">
+<form>
   <div class="form-group">
-  <%
-UserDetails us = (UserDetails)session.getAttribute("UserD");
-
-if (us != null) {
-%>
-<input type="hidden" value="<%=us.getId()%>" name="uid">
-<%
-} else {
-%>
-<p>user not found, please enter login.</p>
-<%
-}
-%>
-
     <label for="exampleInputEmail1">Note Title</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" required="required">
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
      </div>
 
 <div class="form-group">
  <label for="exampleInputEmail1">Note Content</label>
-<textarea rows="9" cols="" class="form-control" name="content" required="required"></textarea>
+<textarea rows="9" cols="" class="form-control"></textarea>
 </div>
 
 
